@@ -54,6 +54,10 @@ ROOT_URLCONF = 'date_site.urls'
 
 WSGI_APPLICATION = 'date_site.wsgi.application'
 
+# Django-registration-redux settings
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
