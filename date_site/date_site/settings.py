@@ -36,8 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'registration',
     'date_site_app',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,10 +91,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates/date_site_app')
+TEMPLATE_APP_PATH = os.path.join(BASE_DIR, 'date_site_app/templates')
 
 TEMPLATE_DIRS = [
      TEMPLATE_PATH,
+     TEMPLATE_APP_PATH,
 ]
 
 STATIC_PATH = os.path.join(BASE_DIR, 'static')
@@ -100,4 +105,26 @@ STATICFILES_DIRS = (
     STATIC_PATH,
 )
 
+# allauth settings
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    # Required by allauth template tags
+    "django.core.context_processors.request",
+
+    # allauth specific context processors
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
+)
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+ACCOUNT_SIGNUP_FORM_CLASS = 'date_site_app.forms.SignupForm'
+
+SITE_ID = 1
 

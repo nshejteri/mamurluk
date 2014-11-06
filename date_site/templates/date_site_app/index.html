@@ -1,20 +1,13 @@
-<!DOCTYPE <!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<form action="/login/" id="login_form" method="POST">
-		{% csrf_token %}
-		<label for="username">Username:</label>
-		<input type="text" id="username" name="username" value="">
-		<br>
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="password" value="">
-		<br>
-		<input type="submit" id="submit" value="login">
-	</form>
-	<a href="/register/">Register here</a>
-	
-</body>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title></title>
+	</head>
+
+	<body>
+		<ul>
+			<li><a href="{% url 'account_signup' %}">Registruj se</a></li>
+			<li><a href="{% url 'account_login' %}">Prijavi se</a></li>
+		</ul>
+	</body>
 </html>

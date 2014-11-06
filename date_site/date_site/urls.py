@@ -9,5 +9,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'', include('date_site_app.urls')),
+    (r'^accounts/', include('allauth.urls')),
 )
 
