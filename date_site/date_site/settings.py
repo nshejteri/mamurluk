@@ -125,6 +125,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'date_site_app.forms.SignupForm'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
 
