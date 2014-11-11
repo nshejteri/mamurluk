@@ -57,11 +57,6 @@ ROOT_URLCONF = 'date_site.urls'
 
 WSGI_APPLICATION = 'date_site.wsgi.application'
 
-# Django-registration-redux settings
-ACCOUNT_ACTIVATION_DAYS = 7
-REGISTRATION_AUTO_LOGIN = True
-
-
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -79,12 +74,17 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I18N = False
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
+DATE_FORMAT = 'd m Y'
+
+DATE_INPUT_FORMATS = (
+     '%d/%m/%Y', '%Y-%m-%d',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
@@ -125,7 +125,18 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'date_site_app.forms.SignupForm'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
+#LOGIN_REDIRECT_URL = "/"
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'stavi_username_od_emaila'
+EMAIL_HOST_PASSWORD = 'stavi_password_od_emaila'
+EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 SITE_ID = 1
 

@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 
 # Register your models here.
-admin.site.register(UserProfile)
 
 class UserProfileInline(admin.StackedInline):
 	model = UserProfile

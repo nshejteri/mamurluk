@@ -8,6 +8,8 @@
 		<ul>
 			<li><a href="{% url 'account_signup' %}">Registruj se</a></li>
 			<li><a href="{% url 'account_login' %}">Prijavi se</a></li>
+
+			{{ user.profile.date_of_birth }}
 		</ul>
 	</body>
 </html>

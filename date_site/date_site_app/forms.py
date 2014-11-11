@@ -21,9 +21,12 @@ class SignupForm(forms.Form):
 	#date_of_birth = forms.DateField(widget=forms.widgets.DateInput(format="%m/%d/%Y"), input_formats=["%m/%d/%Y"])
 	#date_of_birth = forms.DateField()
 	#date_of_birth = forms.DateField(widget=forms.DateInput(format=('%d-%m-%Y'), attrs={'class':'myDateClass', 'placeholder':'Select a date'}))
-	date_of_birth = forms.DateTimeField(required=True)
+	date_of_birth = forms.DateField(required=True, widget=SelectDateWidget(years=range(1950, datetime.date.today().year)))
+	#birthday = forms.DateField(required=True)
 
 	def signup(self, request, user):
+
 		gender = self.cleaned_data['gender']
+		date_of_birth = self.cleaned_data['date_of_birth']
 		profile = UserProfile(user=user, gender=gender, date_of_birth=date_of_birth)
 		profile.save()
